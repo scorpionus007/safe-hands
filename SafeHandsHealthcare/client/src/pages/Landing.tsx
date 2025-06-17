@@ -52,7 +52,7 @@ export default function Landing() {
 
   const featuredProviders = [
     {
-      id: 1,
+      id: "priya-sharma",
       name: "Priya Sharma",
       title: "Registered Nurse",
       experience: "8+ years experience in home nursing and elderly care",
@@ -63,7 +63,7 @@ export default function Landing() {
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
     },
     {
-      id: 2,
+      id: "rajesh-patel",
       name: "Dr. Rajesh Patel",
       title: "Licensed Physiotherapist", 
       experience: "12+ years in post-operative rehabilitation and chronic pain management",
@@ -74,7 +74,7 @@ export default function Landing() {
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
     },
     {
-      id: 3,
+      id: "anita-reddy",
       name: "Anita Reddy",
       title: "Certified Childcare Specialist",
       experience: "6+ years in early childhood education and newborn care",
@@ -111,6 +111,13 @@ export default function Landing() {
                 <p className="text-xl text-gray-600 leading-relaxed">
                   Connect with verified home care, medical, and childcare professionals. Quality care services delivered right to your doorstep with complete peace of mind.
                 </p>
+                <div className="pt-4">
+                  <Link href="/home-care">
+                    <Button size="lg" className="bg-brand-blue-dark hover:bg-blue-600 text-white px-8 py-6 text-lg">
+                      Start Booking Now
+                    </Button>
+                  </Link>
+                </div>
               </div>
 
               {/* Location Permission Prompt */}
@@ -231,12 +238,14 @@ export default function Landing() {
                   
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-semibold text-gray-900">{provider.hourlyRate}</span>
-                    <Button 
-                      variant="default"
-                      onClick={() => setLocation('/home-care')}
-                    >
-                      View Profile
-                    </Button>
+                    <Link href={`/providers/${provider.id}`}>
+                      <Button 
+                        variant="default"
+                        className="bg-brand-blue-dark hover:bg-blue-600 text-white"
+                      >
+                        View Profile
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

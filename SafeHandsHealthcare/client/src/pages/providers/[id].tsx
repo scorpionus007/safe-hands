@@ -25,12 +25,128 @@ import Footer from "@/components/Footer";
 import RatingStars from "@/components/RatingStars";
 import ShareModal from "@/components/ShareModal";
 
+// Mock data for featured providers
+const featuredProviders = {
+  "rajesh-patel": {
+    id: "rajesh-patel",
+    firstName: "Rajesh",
+    lastName: "Patel",
+    title: "Senior Physiotherapist",
+    rating: 4.9,
+    totalReviews: 127,
+    experience: 15,
+    hourlyRate: 1200,
+    city: { name: "Mumbai", state: "Maharashtra" },
+    bio: "Senior physiotherapist with 15 years of experience specializing in sports injuries, post-surgery rehabilitation, and geriatric care. Certified in advanced physiotherapy techniques and committed to providing personalized care for optimal recovery.",
+    education: "Masters in Physiotherapy, Sports Medicine Specialization",
+    languages: ["English", "Hindi", "Gujarati"],
+    isVerified: true,
+    services: [
+      {
+        id: 1,
+        name: "Sports Injury Rehabilitation",
+        price: 1200,
+        description: "Specialized treatment for sports-related injuries and recovery"
+      },
+      {
+        id: 2,
+        name: "Post-Surgery Rehabilitation",
+        price: 1500,
+        description: "Comprehensive rehabilitation programs after surgical procedures"
+      },
+      {
+        id: 3,
+        name: "Geriatric Care",
+        price: 1000,
+        description: "Specialized physiotherapy for elderly patients"
+      }
+    ]
+  },
+  "priya-sharma": {
+    id: "priya-sharma",
+    firstName: "Priya",
+    lastName: "Sharma",
+    title: "Pediatric Nurse",
+    rating: 4.8,
+    totalReviews: 98,
+    experience: 12,
+    hourlyRate: 1000,
+    city: { name: "Delhi", state: "Delhi" },
+    bio: "Experienced pediatric nurse with 12 years of expertise in child healthcare. Specialized in newborn care, child development monitoring, and pediatric emergency care. Passionate about providing compassionate and professional care to children.",
+    education: "Bachelors in Nursing, Pediatric Specialization",
+    languages: ["English", "Hindi", "Punjabi"],
+    isVerified: true,
+    services: [
+      {
+        id: 1,
+        name: "Newborn Care",
+        price: 1000,
+        description: "Specialized care for newborns including feeding, bathing, and health monitoring"
+      },
+      {
+        id: 2,
+        name: "Child Development Monitoring",
+        price: 1200,
+        description: "Regular health check-ups and development tracking for children"
+      },
+      {
+        id: 3,
+        name: "Pediatric Emergency Care",
+        price: 1500,
+        description: "24/7 emergency care services for children"
+      }
+    ]
+  },
+  "anita-reddy": {
+    id: "anita-reddy",
+    firstName: "Anita",
+    lastName: "Reddy",
+    title: "Geriatric Care Specialist",
+    rating: 4.7,
+    totalReviews: 85,
+    experience: 10,
+    hourlyRate: 900,
+    city: { name: "Bangalore", state: "Karnataka" },
+    bio: "Dedicated geriatric care specialist with 10 years of experience in elderly care. Expertise in managing chronic conditions, mobility assistance, and providing compassionate care for seniors. Committed to improving the quality of life for elderly patients.",
+    education: "Masters in Geriatric Care",
+    languages: ["English", "Hindi", "Kannada", "Telugu"],
+    isVerified: true,
+    services: [
+      {
+        id: 1,
+        name: "Elderly Care",
+        price: 900,
+        description: "Comprehensive care for elderly patients including daily activities and health monitoring"
+      },
+      {
+        id: 2,
+        name: "Chronic Condition Management",
+        price: 1100,
+        description: "Specialized care for managing chronic health conditions in elderly patients"
+      },
+      {
+        id: 3,
+        name: "Mobility Assistance",
+        price: 800,
+        description: "Support with mobility and physical activities for elderly patients"
+      }
+    ]
+  }
+};
+
 export default function ProviderProfilePage() {
   const { id } = useParams<{ id: string }>();
-
+  
+  // Check if the provider is a featured provider
+  const featuredProvider = featuredProviders[id as keyof typeof featuredProviders];
+  
+  // If it's a featured provider, use the mock data
   const { data: provider, isLoading } = useQuery({
     queryKey: ["/api/providers", id],
     queryFn: async () => {
+      if (featuredProvider) {
+        return featuredProvider;
+      }
       const response = await fetch(`/api/providers/${id}`);
       if (!response.ok) throw new Error("Failed to fetch provider");
       return response.json();
