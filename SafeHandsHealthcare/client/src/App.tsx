@@ -11,6 +11,7 @@ import Dashboard from "@/pages/Dashboard";
 import AdminPanel from "@/pages/AdminPanel";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Import Home Care pages
 import HomeCarePage from "@/pages/home-care";
@@ -72,6 +73,7 @@ function Router() {
 function App() {
   return (
     <TooltipProvider>
+      <ScrollToTop />
       <Toaster />
       <Router />
     </TooltipProvider>
