@@ -13,6 +13,8 @@ import AnitaReddyProfile from "@/pages/providers/anita-reddy";
 import Booking from "@/pages/Booking";
 import Dashboard from "@/pages/Dashboard";
 import AdminPanel from "@/pages/AdminPanel";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
 
 // Import Home Care pages
 import HomeCarePage from "@/pages/home-care";
@@ -40,6 +42,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Landing} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="/home" component={Home} />
       
       {/* Service Routes */}
