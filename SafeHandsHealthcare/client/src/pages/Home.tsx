@@ -46,17 +46,11 @@ export default function Home() {
       {/* Quick Actions */}
       <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             <Link href="/providers">
               <Button className="w-full h-20 flex flex-col space-y-2 bg-brand-blue-dark hover:bg-blue-600 text-white">
                 <MapPin className="w-6 h-6" />
                 <span>Find Providers</span>
-              </Button>
-            </Link>
-            <Link href="/booking">
-              <Button className="w-full h-20 flex flex-col space-y-2 bg-brand-blue-dark hover:bg-blue-600 text-white">
-                <Calendar className="w-6 h-6" />
-                <span>Book Service</span>
               </Button>
             </Link>
             <Link href="/dashboard">
