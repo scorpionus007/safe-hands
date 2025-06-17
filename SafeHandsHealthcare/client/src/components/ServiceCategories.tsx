@@ -61,6 +61,19 @@ export default function ServiceCategories() {
     }
   };
 
+  const getCategoryRoute = (categoryName: string) => {
+    switch (categoryName.toLowerCase()) {
+      case 'home care':
+        return '/home-care';
+      case 'medical services':
+        return '/medical-services';
+      case 'child care':
+        return '/child-care';
+      default:
+        return '/home-care';
+    }
+  };
+
   if (!categories || categories.length === 0) {
     return (
       <section className="py-16 lg:py-20 bg-gray-50">
@@ -117,7 +130,7 @@ export default function ServiceCategories() {
                   ))}
                 </div>
                 
-                <Link href={`/providers?categoryId=${category.id}`}>
+                <Link href={getCategoryRoute(category.name)}>
                   <Button className="w-full bg-brand-blue-dark hover:bg-blue-600 text-white transition-colors font-medium">
                     Explore {category.name}
                   </Button>

@@ -20,8 +20,8 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // Navigate to providers page with search query
-      window.location.href = `/providers?search=${encodeURIComponent(searchQuery)}`;
+      // Navigate to home care page with search query
+      window.location.href = `/home-care?search=${encodeURIComponent(searchQuery)}`;
     }
   };
 
@@ -80,12 +80,12 @@ export default function Header() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/providers">
+            <Link href="/home-care">
               <Button variant="ghost" className="text-gray-700 hover:text-sky-600">
-                Find Providers
+                Find Care
               </Button>
             </Link>
-            <Link href="/login">
+            <Link href="/home-care">
               <Button className="bg-sky-500 hover:bg-sky-600 text-white">
                 Get Started
               </Button>
@@ -138,12 +138,12 @@ export default function Header() {
 
                     {/* Mobile Navigation */}
                     <div className="space-y-2">
-                      <Link href="/providers">
+                      <Link href="/home-care">
                         <Button variant="ghost" className="w-full justify-start">
-                          Find Providers
+                          Find Care
                         </Button>
                       </Link>
-                      <Link href="/login">
+                      <Link href="/home-care">
                         <Button className="w-full bg-sky-500 hover:bg-sky-600 text-white">
                           Get Started
                         </Button>

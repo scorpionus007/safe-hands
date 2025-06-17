@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -13,6 +13,7 @@ import { getFeaturedReviews, cities } from "@/data/mockData";
 import logoImage from "@assets/ChatGPT Image Jun 17, 2025, 11_45_25 AM_1750148953001.png";
 
 export default function Landing() {
+  const [, setLocation] = useLocation();
   const featuredReviews = getFeaturedReviews();
   const indianCities = cities;
 
@@ -27,6 +28,25 @@ export default function Landing() {
           console.error("Location access denied:", error);
         }
       );
+    }
+  };
+
+  const handleServiceClick = (service: string) => {
+    switch (service) {
+      case 'elderly':
+      case 'nursing':
+      case 'physiotherapy':
+        setLocation('/home-care');
+        break;
+      case 'childcare':
+        setLocation('/child-care');
+        break;
+      case 'doctor':
+      case 'massage':
+        setLocation('/medical-services');
+        break;
+      default:
+        setLocation('/home-care');
     }
   };
 
@@ -135,6 +155,7 @@ export default function Landing() {
                       key={service.service}
                       variant="outline"
                       className="p-3 h-auto border-gray-200 hover:border-brand-blue-dark hover:bg-blue-50 transition-all"
+                      onClick={() => handleServiceClick(service.service)}
                     >
                       <div className="flex flex-col items-center space-y-2">
                         <div className="text-brand-blue-dark">
@@ -198,33 +219,28 @@ export default function Landing() {
                     <span className="text-sm text-gray-600">{provider.rating} ({provider.reviews} reviews)</span>
                   </div>
                   
-                  <p className="text-sm text-gray-700 mb-4">{provider.experience}</p>
+                  <p className="text-sm text-gray-600 mb-4">{provider.experience}</p>
                   
-                  <div className="space-y-2 mb-4">
-                    {provider.services.map((service) => (
-                      <Badge key={service} variant="outline" className="mr-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {provider.services.map((service, index) => (
+                      <Badge key={index} variant="outline" className="bg-gray-50">
                         {service}
                       </Badge>
                     ))}
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-gray-900">{provider.hourlyRate}</span>
-                    <Button className="bg-brand-blue-dark hover:bg-blue-600 text-white">
+                    <span className="text-lg font-semibold text-gray-900">{provider.hourlyRate}</span>
+                    <Button 
+                      variant="default"
+                      onClick={() => setLocation('/home-care')}
+                    >
                       View Profile
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/providers">
-              <Button variant="outline" size="lg" className="border-brand-blue-dark text-brand-blue-dark hover:bg-brand-blue-dark hover:text-white">
-                View All Professionals
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
