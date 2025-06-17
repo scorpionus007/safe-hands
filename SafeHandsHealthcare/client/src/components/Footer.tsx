@@ -161,8 +161,8 @@ export default function Footer() {
               <Phone className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">24/7 Support</p>
-                <a href="tel:+1-800-SAFEHANDS" className="text-brand-blue hover:text-white transition-colors">
-                  +1 (800) SAFE-HANDS
+                <a href="tel:+91-8999411111 SAFEHANDS" className="text-brand-blue hover:text-white transition-colors">
+                +91-8999411111 SAFEHANDS
                 </a>
               </div>
             </div>
@@ -171,9 +171,7 @@ export default function Footer() {
               <Mail className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">Email Support</p>
-                <a href="mailto:support@safehands.com" className="text-brand-blue hover:text-white transition-colors">
-                  support@safehands.com
-                </a>
+                <p className="text-sm text-gray-600">Email: safehands.caregivers@gmail.com</p>
               </div>
             </div>
             
@@ -181,7 +179,7 @@ export default function Footer() {
               <MapPin className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">Headquarters</p>
-                <p className="text-gray-300">San Francisco, CA</p>
+                <p className="text-gray-300">Gujarat, India</p>
               </div>
             </div>
           </div>
