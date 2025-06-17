@@ -33,7 +33,7 @@ export default function Footer() {
               <a href="#" className="text-gray-400 hover:text-brand-blue transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-brand-blue transition-colors">
+              <a href="https://www.instagram.com/_safehands__?igsh=aG9naWlrNXJ1ZGc=" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-brand-blue transition-colors">
@@ -47,33 +47,28 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/home-care" className="text-gray-300 hover:text-white transition-colors">
-                  Home Nursing
+                <Link href="/home-care">
+                  <a className="text-gray-300 hover:text-white transition-colors">Home Nursing</a>
                 </Link>
               </li>
               <li>
-                <Link href="/home-care" className="text-gray-300 hover:text-white transition-colors">
-                  Elderly Care
+                <Link href="/home-care">
+                  <a className="text-gray-300 hover:text-white transition-colors">Elderly Care</a>
                 </Link>
               </li>
               <li>
-                <Link href="/medical-services" className="text-gray-300 hover:text-white transition-colors">
-                  Doctor Visits
+                <Link href="/medical-services">
+                  <a className="text-gray-300 hover:text-white transition-colors">Doctor Visits</a>
                 </Link>
               </li>
               <li>
-                <Link href="/medical-services" className="text-gray-300 hover:text-white transition-colors">
-                  Physiotherapy
+                <Link href="/medical-services">
+                  <a className="text-gray-300 hover:text-white transition-colors">Physiotherapy</a>
                 </Link>
               </li>
               <li>
-                <Link href="/child-care" className="text-gray-300 hover:text-white transition-colors">
-                  Child Care
-                </Link>
-              </li>
-              <li>
-                <Link href="/child-care" className="text-gray-300 hover:text-white transition-colors">
-                  Baby Care
+                <Link href="/child-care">
+                  <a className="text-gray-300 hover:text-white transition-colors">Child Care</a>
                 </Link>
               </li>
             </ul>
@@ -84,33 +79,33 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Company</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
-                  About Us
+                <Link href="/about">
+                  <a className="text-gray-300 hover:text-white transition-colors">About Us</a>
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works" className="text-gray-300 hover:text-white transition-colors">
-                  How It Works
+                <Link href="/how-it-works">
+                  <a className="text-gray-300 hover:text-white transition-colors">How It Works</a>
                 </Link>
               </li>
               <li>
-                <Link href="/safety" className="text-gray-300 hover:text-white transition-colors">
-                  Safety Standards
+                <Link href="/safety">
+                  <a className="text-gray-300 hover:text-white transition-colors">Safety Standards</a>
                 </Link>
               </li>
               <li>
-                <Link href="/become-provider" className="text-gray-300 hover:text-white transition-colors">
-                  Become a Provider
+                <Link href="/become-provider">
+                  <a className="text-gray-300 hover:text-white transition-colors">Become a Provider</a>
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-gray-300 hover:text-white transition-colors">
-                  Careers
+                <Link href="/careers">
+                  <a className="text-gray-300 hover:text-white transition-colors">Careers</a>
                 </Link>
               </li>
               <li>
-                <Link href="/press" className="text-gray-300 hover:text-white transition-colors">
-                  Press
+                <Link href="/press">
+                  <a className="text-gray-300 hover:text-white transition-colors">Press</a>
                 </Link>
               </li>
             </ul>
@@ -121,33 +116,33 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Support</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/help" className="text-gray-300 hover:text-white transition-colors">
-                  Help Center
+                <Link href="/help">
+                  <a className="text-gray-300 hover:text-white transition-colors">Help Center</a>
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact Us
+                <Link href="/contact">
+                  <a className="text-gray-300 hover:text-white transition-colors">Contact Us</a>
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
+                <Link href="/privacy">
+                  <a className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-gray-300 hover:text-white transition-colors">
-                  Terms of Service
+                <Link href="/terms">
+                  <a className="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
                 </Link>
               </li>
               <li>
-                <Link href="/insurance" className="text-gray-300 hover:text-white transition-colors">
-                  Insurance
+                <Link href="/insurance">
+                  <a className="text-gray-300 hover:text-white transition-colors">Insurance</a>
                 </Link>
               </li>
               <li>
-                <Link href="/emergency" className="text-gray-300 hover:text-white transition-colors">
-                  Emergency Support
+                <Link href="/emergency">
+                  <a className="text-gray-300 hover:text-white transition-colors">Emergency Support</a>
                 </Link>
               </li>
             </ul>
@@ -179,7 +174,7 @@ export default function Footer() {
               <MapPin className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">Headquarters</p>
-                <p className="text-gray-300">Gujarat, India</p>
+                <p className="text-gray-300">Mumbai, India</p>
               </div>
             </div>
           </div>
@@ -189,17 +184,17 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2024 SafeHands. All rights reserved.
+              © 2025 SafeHands. All rights reserved.
             </p>
             <div className="flex items-center space-x-6 text-sm">
-              <Link href="/sitemap" className="text-gray-400 hover:text-white transition-colors">
-                Sitemap
+              <Link href="/sitemap">
+                <a className="text-gray-400 hover:text-white transition-colors">Sitemap</a>
               </Link>
-              <Link href="/accessibility" className="text-gray-400 hover:text-white transition-colors">
-                Accessibility
+              <Link href="/accessibility">
+                <a className="text-gray-400 hover:text-white transition-colors">Accessibility</a>
               </Link>
-              <Link href="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">
-                Cookie Policy
+              <Link href="/cookie-policy">
+                <a className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
               </Link>
             </div>
           </div>
