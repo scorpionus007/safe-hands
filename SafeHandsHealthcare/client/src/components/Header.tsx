@@ -27,17 +27,17 @@ export default function Header() {
     {
       name: "Home Care",
       href: "/home-care",
-      description: "Professional care services at home"
+      description: "Professional home nursing and elderly care services"
     },
     {
       name: "Medical Services",
       href: "/medical-services",
-      description: "Expert medical care and consultations"
+      description: "Doctor visits and medical consultations at home"
     },
     {
       name: "Child Care",
       href: "/child-care",
-      description: "Quality childcare and education"
+      description: "Expert childcare and baby care services"
     }
   ];
 
@@ -110,29 +110,41 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-gray-700 hover:text-sky-600">
-                  Our Services
-                  <ChevronDown className="ml-2 h-4 w-4" />
+                <Button variant="ghost" className="flex items-center space-x-1">
+                  <span>Our Services</span>
+                  <ChevronDown className="w-4 h-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuContent align="start" className="w-56">
                 {services.map((service) => (
                   <DropdownMenuItem key={service.href} asChild>
-                    <Link href={service.href} className="cursor-pointer">
-                      <div>
-                        <div className="font-medium">{service.name}</div>
-                        <div className="text-sm text-gray-500">{service.description}</div>
-                      </div>
+                    <Link href={service.href} className="flex flex-col items-start">
+                      <span className="font-medium">{service.name}</span>
+                      <span className="text-sm text-gray-500">{service.description}</span>
                     </Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
             
+            <Link href="/about">
+              <Button variant="ghost">About Us</Button>
+            </Link>
+            <Link href="/how-it-works">
+              <Button variant="ghost">How It Works</Button>
+            </Link>
+            <Link href="/contact">
+              <Button variant="ghost">Contact</Button>
+            </Link>
+          </div>
+
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
             <Link href="/become-provider">
-              <Button className="bg-sky-500 hover:bg-sky-600 text-white">
-                Become a Service Provider
-              </Button>
+              <Button variant="outline">Become a Service Provider</Button>
+            </Link>
+            <Link href="/login">
+              <Button className="bg-brand-blue hover:bg-blue-600 text-white">Get Started</Button>
             </Link>
           </div>
 
@@ -140,59 +152,58 @@ export default function Header() {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <Menu className="w-5 h-5" />
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
-                <div className="py-6">
-                  <div className="space-y-4">
-                    {/* Mobile Search */}
-                    <div className="space-y-2">
-                      <Select value={selectedCity} onValueChange={setSelectedCity}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select City" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {indianCities?.map((city: any) => (
-                            <SelectItem key={city.id} value={city.id.toString()}>
-                              {city.name}, {city.state}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <form onSubmit={handleSearch} className="relative">
-                        <Input
-                          type="text"
-                          placeholder="Search for services..."
-                          value={searchQuery}
-                          onChange={(e) => setSearchQuery(e.target.value)}
-                          className="pr-10"
-                        />
-                        <Button
-                          type="submit"
-                          variant="ghost"
-                          size="sm"
-                          className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
-                        >
-                          <Search className="w-4 h-4" />
-                        </Button>
-                      </form>
-                    </div>
+              <SheetContent side="right">
+                <div className="flex flex-col h-full">
+                  <div className="flex-1 py-6">
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="font-medium text-gray-900 px-2">Navigation</h3>
+                        <div className="mt-2 space-y-1">
+                          <Link href="/about">
+                            <Button variant="ghost" className="w-full justify-start">
+                              About Us
+                            </Button>
+                          </Link>
+                          <Link href="/how-it-works">
+                            <Button variant="ghost" className="w-full justify-start">
+                              How It Works
+                            </Button>
+                          </Link>
+                          <Link href="/contact">
+                            <Button variant="ghost" className="w-full justify-start">
+                              Contact
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
 
-                    {/* Mobile Navigation */}
-                    <div className="space-y-2">
-                      <div className="font-medium text-gray-900 px-2">Our Services</div>
-                      {services.map((service) => (
-                        <Link key={service.href} href={service.href}>
-                          <Button variant="ghost" className="w-full justify-start">
-                            {service.name}
-                          </Button>
-                        </Link>
-                      ))}
+                      <div className="space-y-2">
+                        <div className="font-medium text-gray-900 px-2">Our Services</div>
+                        {services.map((service) => (
+                          <Link key={service.href} href={service.href}>
+                            <Button variant="ghost" className="w-full justify-start">
+                              {service.name}
+                            </Button>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-gray-200 pt-4 pb-6">
+                    <div className="space-y-4 px-2">
                       <Link href="/become-provider">
-                        <Button className="w-full bg-sky-500 hover:bg-sky-600 text-white">
+                        <Button variant="outline" className="w-full">
                           Become a Service Provider
+                        </Button>
+                      </Link>
+                      <Link href="/login">
+                        <Button className="w-full bg-brand-blue hover:bg-blue-600 text-white">
+                          Get Started
                         </Button>
                       </Link>
                     </div>
