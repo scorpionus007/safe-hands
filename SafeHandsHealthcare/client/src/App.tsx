@@ -10,11 +10,23 @@ import Booking from "@/pages/Booking";
 import Dashboard from "@/pages/Dashboard";
 import AdminPanel from "@/pages/AdminPanel";
 
+// Import Home Care pages
+import HomeCarePage from "@/pages/home-care";
+import ServiceDetailPage from "@/pages/home-care/[id]";
+import BookingConfirmationPage from "@/pages/home-care/booking-confirmation";
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Landing} />
       <Route path="/home" component={Home} />
+      
+      {/* Home Care Routes */}
+      <Route path="/home-care" component={HomeCarePage} />
+      <Route path="/home-care/:id" component={ServiceDetailPage} />
+      <Route path="/home-care/booking-confirmation" component={BookingConfirmationPage} />
+      
+      {/* Other Routes */}
       <Route path="/providers" component={Providers} />
       <Route path="/providers/:id" component={ProviderProfile} />
       <Route path="/booking" component={Booking} />

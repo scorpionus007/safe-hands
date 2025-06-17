@@ -47,32 +47,32 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/providers?category=home-care">
+                <Link href="/home-care">
                   <a className="text-gray-300 hover:text-white transition-colors">Home Nursing</a>
                 </Link>
               </li>
               <li>
-                <Link href="/providers?category=home-care">
+                <Link href="/home-care">
                   <a className="text-gray-300 hover:text-white transition-colors">Elderly Care</a>
                 </Link>
               </li>
               <li>
-                <Link href="/providers?category=medical">
+                <Link href="/medical-services">
                   <a className="text-gray-300 hover:text-white transition-colors">Doctor Visits</a>
                 </Link>
               </li>
               <li>
-                <Link href="/providers?category=medical">
+                <Link href="/medical-services">
                   <a className="text-gray-300 hover:text-white transition-colors">Physiotherapy</a>
                 </Link>
               </li>
               <li>
-                <Link href="/providers?category=childcare">
+                <Link href="/child-care">
                   <a className="text-gray-300 hover:text-white transition-colors">Child Care</a>
                 </Link>
               </li>
               <li>
-                <Link href="/providers?category=childcare">
+                <Link href="/child-care">
                   <a className="text-gray-300 hover:text-white transition-colors">Baby Care</a>
                 </Link>
               </li>
@@ -201,7 +201,7 @@ export default function Footer() {
                 <a className="text-gray-400 hover:text-white transition-colors">Accessibility</a>
               </Link>
               <Link href="/cookie-policy">
-                <a className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+                <a className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
               </Link>
             </div>
           </div>
