@@ -1,35 +1,52 @@
-import { Heart, Shield, Users, Award } from "lucide-react";
+import { Heart, Users, MapPin, Clock, Award, Target, Eye, Lightbulb } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
   const stats = [
-    { label: "Happy Clients", value: "10,000+" },
-    { label: "Care Professionals", value: "5,000+" },
-    { label: "Cities Covered", value: "50+" },
-    { label: "Years of Excellence", value: "5+" }
+    {
+      icon: <Users className="w-6 h-6" />,
+      value: "10,000+",
+      label: "Happy Clients"
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      value: "5,000+",
+      label: "Care Professionals"
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      value: "50+",
+      label: "Cities Covered"
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      value: "5+",
+      label: "Years of Excellence"
+    }
   ];
 
   const values = [
     {
       icon: <Heart className="w-8 h-8" />,
       title: "Compassion",
-      description: "We care deeply about the well-being of our clients and their families."
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Trust",
-      description: "Building lasting relationships through transparency and reliability."
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Excellence",
-      description: "Delivering the highest quality care services with attention to detail."
+      description: "We care deeply about our clients and their well-being"
     },
     {
       icon: <Award className="w-8 h-8" />,
+      title: "Trust",
+      description: "Building lasting relationships through reliability and transparency"
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Excellence",
+      description: "Committed to delivering the highest quality of care"
+    },
+    {
+      icon: <Lightbulb className="w-8 h-8" />,
       title: "Innovation",
-      description: "Continuously improving our services through technology and best practices."
+      description: "Continuously improving our services through technology"
     }
   ];
 
@@ -37,22 +54,22 @@ export default function AboutPage() {
     {
       name: "Dr. Sarah Johnson",
       role: "Chief Medical Officer",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: "/team/sarah.jpg"
     },
     {
       name: "Michael Chen",
       role: "Head of Operations",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: "/team/michael.jpg"
     },
     {
       name: "Priya Sharma",
       role: "Director of Care Services",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: "/team/priya.jpg"
     },
     {
       name: "David Wilson",
       role: "Technology Lead",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+      image: "/team/david.jpg"
     }
   ];
 
@@ -68,19 +85,22 @@ export default function AboutPage() {
               About SafeHands Healthcare
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Transforming healthcare delivery through technology and compassionate care
+              We're on a mission to make quality healthcare accessible to everyone, right at their doorstep.
             </p>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl font-bold text-brand-blue-dark mb-2">{stat.value}</div>
+                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-blue-dark">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
@@ -93,28 +113,34 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                To make quality healthcare accessible to everyone by connecting patients with verified healthcare professionals through our innovative platform. We strive to deliver compassionate care that improves lives and builds healthier communities.
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                To revolutionize healthcare delivery by making quality medical services accessible, affordable, and convenient for everyone. We believe that everyone deserves access to professional healthcare services, regardless of their location or circumstances.
+              </p>
+              <p className="text-lg text-gray-600">
+                Through our innovative platform, we connect patients with verified healthcare professionals, ensuring that quality care is just a click away.
               </p>
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Vision</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                To be the most trusted healthcare platform that revolutionizes how care is delivered, making professional healthcare services accessible, affordable, and convenient for everyone, everywhere.
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                To become the most trusted healthcare platform in India, known for our commitment to quality, safety, and patient satisfaction. We envision a future where healthcare is truly accessible to all.
+              </p>
+              <p className="text-lg text-gray-600">
+                By leveraging technology and maintaining the highest standards of care, we aim to transform the healthcare landscape and improve the lives of millions.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="py-16 lg:py-20 bg-white">
+      {/* Values Section */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do
+              These core values guide everything we do at SafeHands Healthcare
             </p>
           </div>
 
@@ -132,22 +158,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Team */}
+      {/* Team Section */}
       <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Leadership Team</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Meet the people behind SafeHands Healthcare
+              Meet the experts behind SafeHands Healthcare
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
-                  <img 
-                    src={member.image} 
+                <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4">
+                  <img
+                    src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />
@@ -160,19 +186,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Join Us */}
-      <section className="py-16 lg:py-20 bg-brand-blue-dark text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Join Our Mission</h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-            Be part of a team that's transforming healthcare delivery
-          </p>
-          <a 
-            href="/careers" 
-            className="inline-block bg-white text-brand-blue-dark px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-          >
-            View Open Positions
-          </a>
+      {/* Join Us Section */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Join Our Mission</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Be part of our journey to transform healthcare delivery in India
+            </p>
+            <Button className="bg-brand-blue-dark hover:bg-blue-600 text-white px-8 py-3">
+              View Open Positions
+            </Button>
+          </div>
         </div>
       </section>
 

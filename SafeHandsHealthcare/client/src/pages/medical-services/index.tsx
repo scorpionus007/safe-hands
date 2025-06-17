@@ -142,10 +142,10 @@ export default function MedicalServicesPage() {
                         </div>
                       </div>
                     </div>
-                    <Badge variant="secondary" className="bg-green-100 text-green-600">
+                    <div className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium flex items-center">
                       <Shield className="w-3 h-3 mr-1" />
                       Verified
-                    </Badge>
+                    </div>
                   </div>
 
                   <p className="text-gray-600 mb-4">{service.description}</p>
