@@ -249,9 +249,45 @@ export default function Booking() {
           {step === 2 && (
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center">
-                  <User className="w-5 h-5 mr-2" />
-                  Choose Your Provider
+                <CardTitle className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <User className="w-5 h-5 mr-2" />
+                    Choose Your Provider
+                  </div>
+                  <Select 
+                    defaultValue="rating"
+                    onValueChange={(value) => {
+                      const sortedProviders = [...providers].sort((a, b) => {
+                        switch (value) {
+                          case 'price-low':
+                            return a.hourlyRate - b.hourlyRate;
+                          case 'price-high':
+                            return b.hourlyRate - a.hourlyRate;
+                          case 'rating':
+                            return b.rating - a.rating;
+                          case 'reviews':
+                            return b.totalReviews - a.totalReviews;
+                          default:
+                            return 0;
+                        }
+                      });
+                      // Update the providers list with sorted data
+                      queryClient.setQueryData(
+                        ["/api/providers", form.watch("cityId"), form.watch("serviceId")],
+                        sortedProviders
+                      );
+                    }}
+                  >
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="rating">Highest Rated</SelectItem>
+                      <SelectItem value="reviews">Most Reviews</SelectItem>
+                      <SelectItem value="price-low">Price: Low to High</SelectItem>
+                      <SelectItem value="price-high">Price: High to Low</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -281,7 +317,7 @@ export default function Booking() {
                                   {provider.user?.firstName} {provider.user?.lastName}
                                 </h3>
                                 <span className="text-lg font-bold text-brand-blue-dark">
-                                  ${provider.hourlyRate}/hour
+                                  ₹{provider.hourlyRate}/hour
                                 </span>
                               </div>
                               <p className="text-gray-600 mb-2">{provider.bio}</p>
@@ -294,6 +330,9 @@ export default function Booking() {
                                     Verified
                                   </Badge>
                                 )}
+                                <Badge variant="outline">
+                                  {provider.experience}+ years experience
+                                </Badge>
                               </div>
                             </div>
                           </div>
@@ -456,7 +495,7 @@ export default function Booking() {
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span>Hourly Rate:</span>
-                        <span>${selectedProvider?.hourlyRate}/hour</span>
+                        <span>₹{selectedProvider?.hourlyRate}/hour</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Duration:</span>
@@ -464,7 +503,7 @@ export default function Booking() {
                       </div>
                       <div className="flex justify-between font-bold text-lg border-t pt-2">
                         <span>Total:</span>
-                        <span>${calculateTotal()}</span>
+                        <span>₹{calculateTotal()}</span>
                       </div>
                     </div>
                   </div>

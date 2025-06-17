@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ChevronDown } from "lucide-react";
-import { cities } from "@/data/mockData";
 import logoImage from "@assets/ChatGPT Image Jun 17, 2025, 11_45_25 AM_1750148953001.png";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -15,8 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Header() {
-  const [selectedCity, setSelectedCity] = useState("");
-  const indianCities = cities;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [, setLocation] = useLocation();
   const { user, isAuthenticated, logout } = useAuth();
@@ -59,22 +55,6 @@ export default function Header() {
               </div>
             </div>
           </Link>
-
-          {/* City Selector - Desktop */}
-          <div className="hidden md:block w-48">
-            <Select value={selectedCity} onValueChange={setSelectedCity}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select City" />
-              </SelectTrigger>
-              <SelectContent>
-                {indianCities?.map((city: any) => (
-                  <SelectItem key={city.id} value={city.id.toString()}>
-                    {city.name}, {city.state}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
@@ -130,45 +110,9 @@ export default function Header() {
                 <div className="flex flex-col h-full">
                   <div className="flex-1 py-6">
                     <div className="space-y-6">
-                      {/* City Selector - Mobile */}
-                      <div className="px-2">
-                        <Select value={selectedCity} onValueChange={setSelectedCity}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select City" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {indianCities?.map((city: any) => (
-                              <SelectItem key={city.id} value={city.id.toString()}>
-                                {city.name}, {city.state}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div>
-                        <h3 className="font-medium text-gray-900 px-2">Navigation</h3>
-                        <div className="mt-2 space-y-1">
-                          <Link href="/about">
-                            <Button variant="ghost" className="w-full justify-start">
-                              About Us
-                            </Button>
-                          </Link>
-                          <Link href="/how-it-works">
-                            <Button variant="ghost" className="w-full justify-start">
-                              How It Works
-                            </Button>
-                          </Link>
-                          <Link href="/contact">
-                            <Button variant="ghost" className="w-full justify-start">
-                              Contact
-                            </Button>
-                          </Link>
-                        </div>
-                      </div>
-
+                      {/* Mobile Navigation Links */}
                       <div className="space-y-2">
-                        <div className="font-medium text-gray-900 px-2">Our Services</div>
+                        <h3 className="font-semibold text-gray-900 mb-2">Services</h3>
                         {services.map((service) => (
                           <Link key={service.href} href={service.href}>
                             <Button variant="ghost" className="w-full justify-start">
@@ -177,21 +121,39 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
-                    </div>
-                  </div>
 
-                  <div className="border-t border-gray-200 pt-4 pb-6">
-                    <div className="space-y-4 px-2">
-                      <Link href="/become-provider">
-                        <Button className="w-full bg-brand-blue hover:bg-blue-600 text-white">
-                          Become a Service Provider
-                        </Button>
-                      </Link>
-                      <Link href="/login">
-                        <Button className="w-full bg-brand-blue hover:bg-blue-600 text-white">
-                          Get Started
-                        </Button>
-                      </Link>
+                      <div className="space-y-2">
+                        <h3 className="font-semibold text-gray-900 mb-2">Company</h3>
+                        <Link href="/about">
+                          <Button variant="ghost" className="w-full justify-start">
+                            About Us
+                          </Button>
+                        </Link>
+                        <Link href="/how-it-works">
+                          <Button variant="ghost" className="w-full justify-start">
+                            How It Works
+                          </Button>
+                        </Link>
+                        <Link href="/contact">
+                          <Button variant="ghost" className="w-full justify-start">
+                            Contact
+                          </Button>
+                        </Link>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h3 className="font-semibold text-gray-900 mb-2">Account</h3>
+                        <Link href="/become-provider">
+                          <Button className="w-full bg-brand-blue hover:bg-blue-600 text-white">
+                            Become a Service Provider
+                          </Button>
+                        </Link>
+                        <Link href="/login">
+                          <Button className="w-full bg-brand-blue hover:bg-blue-600 text-white">
+                            Get Started
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
