@@ -156,11 +156,7 @@ export default function Home() {
                     
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-gray-900">${provider.hourlyRate}/hour</span>
-                      <Link href={`/providers/${provider.id}`}>
-                        <Button size="sm" className="bg-brand-blue-dark hover:bg-blue-600 text-white">
-                          View Profile
-                        </Button>
-                      </Link>
+                      <span className="text-sm text-gray-600">Featured Provider</span>
                     </div>
                   </CardContent>
                 </Card>

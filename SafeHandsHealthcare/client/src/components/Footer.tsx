@@ -47,33 +47,33 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/home-care">
-                  <a className="text-gray-300 hover:text-white transition-colors">Home Nursing</a>
+                <Link href="/home-care" className="text-gray-300 hover:text-white transition-colors">
+                  Home Nursing
                 </Link>
               </li>
               <li>
-                <Link href="/home-care">
-                  <a className="text-gray-300 hover:text-white transition-colors">Elderly Care</a>
+                <Link href="/home-care" className="text-gray-300 hover:text-white transition-colors">
+                  Elderly Care
                 </Link>
               </li>
               <li>
-                <Link href="/medical-services">
-                  <a className="text-gray-300 hover:text-white transition-colors">Doctor Visits</a>
+                <Link href="/medical-services" className="text-gray-300 hover:text-white transition-colors">
+                  Doctor Visits
                 </Link>
               </li>
               <li>
-                <Link href="/medical-services">
-                  <a className="text-gray-300 hover:text-white transition-colors">Physiotherapy</a>
+                <Link href="/medical-services" className="text-gray-300 hover:text-white transition-colors">
+                  Physiotherapy
                 </Link>
               </li>
               <li>
-                <Link href="/child-care">
-                  <a className="text-gray-300 hover:text-white transition-colors">Child Care</a>
+                <Link href="/child-care" className="text-gray-300 hover:text-white transition-colors">
+                  Child Care
                 </Link>
               </li>
               <li>
-                <Link href="/child-care">
-                  <a className="text-gray-300 hover:text-white transition-colors">Baby Care</a>
+                <Link href="/child-care" className="text-gray-300 hover:text-white transition-colors">
+                  Baby Care
                 </Link>
               </li>
             </ul>
@@ -84,33 +84,33 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Company</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about">
-                  <a className="text-gray-300 hover:text-white transition-colors">About Us</a>
+                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works">
-                  <a className="text-gray-300 hover:text-white transition-colors">How It Works</a>
+                <Link href="/how-it-works" className="text-gray-300 hover:text-white transition-colors">
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/safety">
-                  <a className="text-gray-300 hover:text-white transition-colors">Safety Standards</a>
+                <Link href="/safety" className="text-gray-300 hover:text-white transition-colors">
+                  Safety Standards
                 </Link>
               </li>
               <li>
-                <Link href="/become-provider">
-                  <a className="text-gray-300 hover:text-white transition-colors">Become a Provider</a>
+                <Link href="/become-provider" className="text-gray-300 hover:text-white transition-colors">
+                  Become a Provider
                 </Link>
               </li>
               <li>
-                <Link href="/careers">
-                  <a className="text-gray-300 hover:text-white transition-colors">Careers</a>
+                <Link href="/careers" className="text-gray-300 hover:text-white transition-colors">
+                  Careers
                 </Link>
               </li>
               <li>
-                <Link href="/press">
-                  <a className="text-gray-300 hover:text-white transition-colors">Press</a>
+                <Link href="/press" className="text-gray-300 hover:text-white transition-colors">
+                  Press
                 </Link>
               </li>
             </ul>
@@ -121,33 +121,33 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Support</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/help">
-                  <a className="text-gray-300 hover:text-white transition-colors">Help Center</a>
+                <Link href="/help" className="text-gray-300 hover:text-white transition-colors">
+                  Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
-                  <a className="text-gray-300 hover:text-white transition-colors">Contact Us</a>
+                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/privacy">
-                  <a className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
+                <Link href="/privacy" className="text-gray-300 hover:text-white transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms">
-                  <a className="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
+                <Link href="/terms" className="text-gray-300 hover:text-white transition-colors">
+                  Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/insurance">
-                  <a className="text-gray-300 hover:text-white transition-colors">Insurance</a>
+                <Link href="/insurance" className="text-gray-300 hover:text-white transition-colors">
+                  Insurance
                 </Link>
               </li>
               <li>
-                <Link href="/emergency">
-                  <a className="text-gray-300 hover:text-white transition-colors">Emergency Support</a>
+                <Link href="/emergency" className="text-gray-300 hover:text-white transition-colors">
+                  Emergency Support
                 </Link>
               </li>
             </ul>
@@ -161,8 +161,8 @@ export default function Footer() {
               <Phone className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">24/7 Support</p>
-                <a href="tel:+1-800-SAFEHANDS" className="text-brand-blue hover:text-white transition-colors">
-                  +1 (800) SAFE-HANDS
+                <a href="tel:+91-8999411111 SAFEHANDS" className="text-brand-blue hover:text-white transition-colors">
+                +91-8999411111 SAFEHANDS
                 </a>
               </div>
             </div>
@@ -171,9 +171,7 @@ export default function Footer() {
               <Mail className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">Email Support</p>
-                <a href="mailto:support@safehands.com" className="text-brand-blue hover:text-white transition-colors">
-                  support@safehands.com
-                </a>
+                <p className="text-sm text-gray-600">Email: safehands.caregivers@gmail.com</p>
               </div>
             </div>
             
@@ -181,7 +179,7 @@ export default function Footer() {
               <MapPin className="w-5 h-5 text-brand-blue" />
               <div>
                 <p className="font-medium">Headquarters</p>
-                <p className="text-gray-300">San Francisco, CA</p>
+                <p className="text-gray-300">Gujarat, India</p>
               </div>
             </div>
           </div>
@@ -194,14 +192,14 @@ export default function Footer() {
               © 2024 SafeHands. All rights reserved.
             </p>
             <div className="flex items-center space-x-6 text-sm">
-              <Link href="/sitemap">
-                <a className="text-gray-400 hover:text-white transition-colors">Sitemap</a>
+              <Link href="/sitemap" className="text-gray-400 hover:text-white transition-colors">
+                Sitemap
               </Link>
-              <Link href="/accessibility">
-                <a className="text-gray-400 hover:text-white transition-colors">Accessibility</a>
+              <Link href="/accessibility" className="text-gray-400 hover:text-white transition-colors">
+                Accessibility
               </Link>
-              <Link href="/cookie-policy">
-                <a className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
+              <Link href="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">
+                Cookie Policy
               </Link>
             </div>
           </div>

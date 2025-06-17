@@ -1,18 +1,78 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Home, Clock, Star, Shield, CheckCircle } from "lucide-react";
+import { Home, Clock, Star, Shield, CheckCircle, MapPin } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RatingStars from "@/components/RatingStars";
+
+const cities = [
+  { name: "Mumbai", lat: 19.0760, lng: 72.8777 },
+  { name: "Delhi", lat: 28.6139, lng: 77.2090 },
+  { name: "Bangalore", lat: 12.9716, lng: 77.5946 },
+  { name: "Hyderabad", lat: 17.3850, lng: 78.4867 },
+  { name: "Chennai", lat: 13.0827, lng: 80.2707 },
+  { name: "Kolkata", lat: 22.5726, lng: 88.3639 },
+  { name: "Pune", lat: 18.5204, lng: 73.8567 },
+  { name: "Ahmedabad", lat: 23.0225, lng: 72.5714 }
+];
 
 export default function HomeCarePage() {
   const [, setLocation] = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedService, setSelectedService] = useState("");
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [nearestCity, setNearestCity] = useState("");
+
+  useEffect(() => {
+    // Get user's location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ lat: latitude, lng: longitude });
+          
+          // Find nearest city
+          const nearest = findNearestCity(latitude, longitude);
+          setNearestCity(nearest);
+          setSearchQuery(nearest);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    }
+  }, []);
+
+  const findNearestCity = (lat: number, lng: number) => {
+    let nearest = cities[0];
+    let minDistance = calculateDistance(lat, lng, cities[0].lat, cities[0].lng);
+
+    cities.forEach(city => {
+      const distance = calculateDistance(lat, lng, city.lat, city.lng);
+      if (distance < minDistance) {
+        minDistance = distance;
+        nearest = city;
+      }
+    });
+
+    return nearest.name;
+  };
+
+  const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+    const R = 6371; // Earth's radius in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+  };
 
   const services = [
     {
@@ -96,13 +156,16 @@ export default function HomeCarePage() {
           {/* Search and Filter Section */}
           <div className="max-w-3xl mx-auto">
             <div className="flex flex-col sm:flex-row gap-4">
-              <Input
-                type="text"
-                placeholder="Search home care services..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1"
-              />
+              <div className="relative flex-1">
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Input
+                  type="text"
+                  placeholder="Enter your location..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
               <Select value={selectedService} onValueChange={setSelectedService}>
                 <SelectTrigger className="w-[200px]">
                   <SelectValue placeholder="Service Type" />
