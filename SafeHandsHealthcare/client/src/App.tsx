@@ -1,11 +1,15 @@
 import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NotFoundPage from "@/pages/404";
 import Landing from "@/pages/Landing";
 import Home from "@/pages/Home";
 import Providers from "@/pages/Providers";
-import ProviderProfile from "@/pages/ProviderProfile";
+import ProviderProfilePage from "@/pages/providers/[id]";
+import RajeshPatelProfile from "@/pages/providers/rajesh-patel";
+import PriyaSharmaProfile from "@/pages/providers/priya-sharma";
+import AnitaReddyProfile from "@/pages/providers/anita-reddy";
 import Booking from "@/pages/Booking";
 import Dashboard from "@/pages/Dashboard";
 import AdminPanel from "@/pages/AdminPanel";
@@ -28,6 +32,9 @@ import BecomeProviderPage from "@/pages/become-provider";
 // Import support pages
 import ContactPage from "@/pages/contact";
 import HelpPage from "@/pages/help";
+
+// Create a client
+const queryClient = new QueryClient();
 
 function Router() {
   return (
@@ -52,9 +59,14 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/help" component={HelpPage} />
       
-      {/* Other Routes */}
+      {/* Provider Routes */}
       <Route path="/providers" component={Providers} />
-      <Route path="/providers/:id" component={ProviderProfile} />
+      <Route path="/providers/:id" component={ProviderProfilePage} />
+      <Route path="/providers/rajesh-patel" component={RajeshPatelProfile} />
+      <Route path="/providers/priya-sharma" component={PriyaSharmaProfile} />
+      <Route path="/providers/anita-reddy" component={AnitaReddyProfile} />
+      
+      {/* Other Routes */}
       <Route path="/booking" component={Booking} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/admin" component={AdminPanel} />
@@ -67,10 +79,12 @@ function Router() {
 
 function App() {
   return (
-    <TooltipProvider>
-      <Toaster />
-      <Router />
-    </TooltipProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Router />
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 }
 

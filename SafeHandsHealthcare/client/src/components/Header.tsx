@@ -1,17 +1,45 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Search } from "lucide-react";
+import { Menu, Search, ChevronDown } from "lucide-react";
 import { cities } from "@/data/mockData";
 import logoImage from "@assets/ChatGPT Image Jun 17, 2025, 11_45_25 AM_1750148953001.png";
+import { useAuth } from "@/hooks/useAuth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [selectedCity, setSelectedCity] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const indianCities = cities;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
+  const { user, isAuthenticated, logout } = useAuth();
+
+  const services = [
+    {
+      name: "Home Care",
+      href: "/home-care",
+      description: "Professional care services at home"
+    },
+    {
+      name: "Medical Services",
+      href: "/medical-services",
+      description: "Expert medical care and consultations"
+    },
+    {
+      name: "Child Care",
+      href: "/child-care",
+      description: "Quality childcare and education"
+    }
+  ];
 
   const SafeHandsLogo = () => (
     <img src={logoImage} alt="SafeHands Logo" className="w-7 h-7" />
@@ -80,14 +108,30 @@ export default function Header() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/home-care">
-              <Button variant="ghost" className="text-gray-700 hover:text-sky-600">
-                Find Care
-              </Button>
-            </Link>
-            <Link href="/home-care">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-gray-700 hover:text-sky-600">
+                  Our Services
+                  <ChevronDown className="ml-2 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                {services.map((service) => (
+                  <DropdownMenuItem key={service.href} asChild>
+                    <Link href={service.href} className="cursor-pointer">
+                      <div>
+                        <div className="font-medium">{service.name}</div>
+                        <div className="text-sm text-gray-500">{service.description}</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
+            <Link href="/become-provider">
               <Button className="bg-sky-500 hover:bg-sky-600 text-white">
-                Get Started
+                Become a Service Provider
               </Button>
             </Link>
           </div>
@@ -138,14 +182,17 @@ export default function Header() {
 
                     {/* Mobile Navigation */}
                     <div className="space-y-2">
-                      <Link href="/home-care">
-                        <Button variant="ghost" className="w-full justify-start">
-                          Find Care
-                        </Button>
-                      </Link>
-                      <Link href="/home-care">
+                      <div className="font-medium text-gray-900 px-2">Our Services</div>
+                      {services.map((service) => (
+                        <Link key={service.href} href={service.href}>
+                          <Button variant="ghost" className="w-full justify-start">
+                            {service.name}
+                          </Button>
+                        </Link>
+                      ))}
+                      <Link href="/become-provider">
                         <Button className="w-full bg-sky-500 hover:bg-sky-600 text-white">
-                          Get Started
+                          Become a Service Provider
                         </Button>
                       </Link>
                     </div>
@@ -156,6 +203,71 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="sm:hidden">
+          <div className="pt-2 pb-3 space-y-1">
+            <Link href="/">
+              <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                Home
+              </span>
+            </Link>
+            {services.map((service) => (
+              <Link key={service.href} href={service.href}>
+                <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                  {service.name}
+                </span>
+              </Link>
+            ))}
+            <Link href="/providers">
+              <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                Find Care
+              </span>
+            </Link>
+            <Link href="/about">
+              <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                About
+              </span>
+            </Link>
+            <Link href="/become-provider">
+              <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                Become a Service Provider
+              </span>
+            </Link>
+          </div>
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            {isAuthenticated ? (
+              <div className="space-y-1">
+                <Link href="/dashboard">
+                  <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                    Dashboard
+                  </span>
+                </Link>
+                <button
+                  onClick={logout}
+                  className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-1">
+                <Link href="/login">
+                  <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                    Login
+                  </span>
+                </Link>
+                <Link href="/signup">
+                  <span className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
+                    Sign Up
+                  </span>
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
