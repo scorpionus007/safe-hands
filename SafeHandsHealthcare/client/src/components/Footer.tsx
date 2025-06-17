@@ -27,7 +27,7 @@ export default function Footer() {
               Connecting families with trusted, verified care professionals for home nursing, medical services, and child care.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-brand-blue transition-colors">
+              <a href="https://www.facebook.com/share/19Pm4bYgb7/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-brand-blue transition-colors">
