@@ -85,7 +85,7 @@ export default function Header() {
                 Find Providers
               </Button>
             </Link>
-            <Link href="/home">
+            <Link href="/login">
               <Button className="bg-sky-500 hover:bg-sky-600 text-white">
                 Get Started
               </Button>
@@ -143,7 +143,7 @@ export default function Header() {
                           Find Providers
                         </Button>
                       </Link>
-                      <Link href="/home">
+                      <Link href="/login">
                         <Button className="w-full bg-sky-500 hover:bg-sky-600 text-white">
                           Get Started
                         </Button>
