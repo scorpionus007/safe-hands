@@ -111,6 +111,15 @@ export default function Landing() {
                 <p className="text-xl text-gray-600 leading-relaxed">
                   Connect with verified home care, medical, and childcare professionals. Quality care services delivered right to your doorstep with complete peace of mind.
                 </p>
+                <div className="pt-4">
+                  <Button 
+                    size="lg" 
+                    className="bg-brand-blue-dark hover:bg-blue-600 text-white px-8 py-6 text-lg"
+                    onClick={() => navigate('/login')}
+                  >
+                    Get Started
+                  </Button>
+                </div>
               </div>
 
               {/* Location Permission Prompt */}
